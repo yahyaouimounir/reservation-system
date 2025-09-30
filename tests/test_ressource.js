@@ -2,6 +2,7 @@ const request = require('supertest');
 const app = require('../app');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+const Ressource = require('../models/ressources');
 
 const token = jwt.sign(
   { userId: 'testid', role: 'admin' },
@@ -10,14 +11,18 @@ const token = jwt.sign(
 );
 
 describe('Ressource API', () => {
+  beforeAll(async () => {
+    await Ressource.deleteMany({ name: 'Salle Test 6' });
+  });
+
   it('should create a ressource', async () => {
     const res = await request(app)
       .post('/api/ressources/create')
       .set('Authorization', `Bearer ${token}`)
       .send({
-        name: 'Salle Test',
+        name: 'Salle Test 6',
         capacity: 5,
-        location: 'Test Etage'
+        location: 'Test Etage 6'
       });
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty('message', 'Ressource created !');
