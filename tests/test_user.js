@@ -2,6 +2,7 @@ describe('User API', () => {
 const request = require('supertest');
 const app = require('../app');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 const token = jwt.sign(
   { userId: 'testid', role: 'admin' },
@@ -23,5 +24,9 @@ describe('User API', () => {
     expect(res.statusCode).toEqual(201);
     expect(res.body.user).toHaveProperty('email', 'testuser@example.com');
   });
+});
+
+afterAll(async () => {
+  await mongoose.connection.close();
 });
 });

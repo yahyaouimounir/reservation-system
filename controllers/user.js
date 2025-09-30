@@ -81,5 +81,8 @@ exports.create = (req, res, next) => {
         },
       });
     })
-    .catch((error) => res.status(400).json({ error }));
+    .catch((error) => {
+      console.log('Erreur création user:', error);
+      res.status(400).json({ error });
+    });
 };

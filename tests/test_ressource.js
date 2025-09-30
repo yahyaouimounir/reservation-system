@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../app');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 const token = jwt.sign(
   { userId: 'testid', role: 'admin' },
@@ -21,4 +22,8 @@ describe('Ressource API', () => {
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty('message', 'Ressource created !');
   });
+});
+
+afterAll(async () => {
+  await mongoose.connection.close();
 });

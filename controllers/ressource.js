@@ -7,7 +7,10 @@ exports.createRessource = (req, res, next) => {
     });
     newRessource.save()
     .then (() => res.status(201).json({ message: 'Ressource created !'}))
-    .catch((error)=>res.status(400).json({ error }));
+        .catch((error)=>{
+            console.log('Erreur création ressource:', error);
+            res.status(400).json({ error });
+        });
     
 }; 
 
