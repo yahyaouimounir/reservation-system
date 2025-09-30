@@ -25,3 +25,9 @@ exports.createReservation = (req, res, next) => {
     })
     .catch((error) => res.status(500).json({ error }));
 }; 
+
+exports.getAllReservations = (req, res, next) => {
+    reservation.find()
+    .then((reservations) => res.status(200).json(reservations))
+    .catch((error) => res.status(400).json({ error }));
+}

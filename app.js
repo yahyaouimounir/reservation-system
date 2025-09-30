@@ -5,7 +5,7 @@ const userRoutes = require("./routes/user");
 const path = require("path");
 mongoose
   .connect(
-    "mongodb+srv://mounir_yy:Mounir2003@mycluster.qyljiqz.mongodb.net/?retryWrites=true&w=majority&appName=mycluster"
+    "mongodb+srv://yahyaoui:mounir2003@cluster0.3prtddp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   )
   .then(() => console.log("connexion etablie"))
   .catch(() => console.log("connexion a mangodb echoué"));
