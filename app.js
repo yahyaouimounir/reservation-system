@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const ressouceRoutes = require("./routes/ressource");
 const userRoutes = require("./routes/user");
 const path = require("path");
+const MONGODB_URI= "mongodb+srv://yahyaoui:wf7PHg4qgZFewM1R@mycluster.qyljiqz.mongodb.net/?retryWrites=true&w=majority&appName=mycluster";
 mongoose
   .connect(
-    "mongodb+srv://yahyaoui:wf7PHg4qgZFewM1R@mycluster.qyljiqz.mongodb.net/?retryWrites=true&w=majority&appName=mycluster"
+   MONGODB_URI
   )
   .then(() => console.log("connexion etablie"))
   .catch(() => console.log("connexion a mangodb echoué"));
