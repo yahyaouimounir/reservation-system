@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
 
 const ressourceSchema = mongoose.Schema({
   name: {
@@ -16,5 +15,4 @@ const ressourceSchema = mongoose.Schema({
     required: true,
   },
 });
-ressourceSchema.plugin(uniqueValidator);
-module.exports = mongoose.model("Ressouces", ressourceSchema);
+module.exports = mongoose.model("Ressource", ressourceSchema);
